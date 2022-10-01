@@ -3,65 +3,55 @@ const sortbtn = document.getElementById('sortbtn');
 const box = document.getElementById('box')
 const container = document.getElementById('container')
 
-var arr1 = [];
-var arr2 = [];
-const count = []
-var size = 100;
-btn.addEventListener('click', function heig() {
-    arr1 = [];
-    arr2 = [];
+var arr1=[];
+var count=[];
+btn.addEventListener('click',()=>{
     container.innerHTML = "";
-    for (let i = 0; i < 15; i++) {
+    arr1 = [];
+    for(let i=0;i<15;i++){
         count.push(i);
         var size = Math.floor(Math.random() * 550) + 50;
         arr1.push(size);
-        arr2.push(size + 'px');
-
         const newDiv = document.createElement("div");
         newDiv.className = 'b';
         newDiv.id = i;
-        newDiv.innerHTML = arr1[i];
-        if (screen.width < 577) {
-            newDiv.style.width = size + 'px';
-            newDiv.style.height = "17px";
-
-        }
-        else
-            newDiv.style.height = size + 'px';
+        newDiv.style.width = 90 + 'px';
+        newDiv.style.height = size+'px';
         container.appendChild(newDiv);
     }
-    console.log(arr1);
-    console.log(arr2);
 })
 
-sortbtn.addEventListener('click', function sorting() {
-
-    for (let i = 0; i < 15; i++) {
-        if (screen.width < 577) {
-            document.getElementById(count[i]).style.backgroundColor = 'blue';
-        }
-        else
-            document.getElementById(count[i]).style.backgroundColor = 'green';
-        for (let j = i; j < 15; j++) {
-            if (arr1[i] > arr1[j]) {
-                var temp = arr1[i];
-                arr1[i] = arr1[j];
-                arr1[j] = temp;
-                var temp = arr2[i];
-                arr2[i] = arr2[j];
-                arr2[j] = temp;
-                document.getElementById(count[i]).style.height = arr2[i];
-                if (screen.width < 577) {
-                    document.getElementById(count[i]).style.width = arr2[i];
-                    document.getElementById(count[i]).style.height = "17px";
-                    document.getElementById(count[j]).style.width = arr2[j];
-                    document.getElementById(count[j]).style.height = "17px";
-                    console.log("sjagkajkjsakjakdj")
+sortbtn.addEventListener('click',()=>{
+    for(let i=0;i<15;i++){
+        for(let j=i;j<15;j++){
+            setTimeout(()=>{
+                if(i>0){
+                document.getElementById(count[i-1]).style.backgroundColor = 'green';
+                    if(j==i){
+                        document.getElementById(count[14]).style.backgroundColor = 'purple'; 
+                    }
+                }
+                document.getElementById(count[j-1]).style.backgroundColor = 'purple';
+                document.getElementById(count[i]).style.backgroundColor = 'red';
+                document.getElementById(count[j]).style.backgroundColor = 'yellow';
+                if(arr1[i]>arr1[j]){
+                    var temp=arr1[i];
+                    arr1[i]=arr1[j];
+                    arr1[j]=temp;
+                    console.log(arr1[i],arr1[j]);
+                    
+                    document.getElementById(count[i]).style.height = arr1[i]+"px";
+                    document.getElementById(count[j]).style.height = arr1[j]+"px";
                 }
                 document.getElementById(count[i]).innerHTML = arr1[i];
                 document.getElementById(count[j]).innerHTML = arr1[j];
-            }
+                console.log(i,j);
+                if(i==14){
+                    document.getElementById(count[14]).style.backgroundColor = 'green';
+                    document.getElementById(count[13]).style.backgroundColor = 'green';
+                }
+            },(1500*i)+(100*j))
         }
-
     }
+    
 })
