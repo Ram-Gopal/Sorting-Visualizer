@@ -36,7 +36,7 @@ btn.addEventListener('click', function heig() {
 
 sortbtn.addEventListener('click', function sorting() {
 
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i <= 15; i++) {
         if (screen.width < 577) {
             document.getElementById(count[i]).style.backgroundColor = 'blue';
         }
