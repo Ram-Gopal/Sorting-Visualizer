@@ -11,7 +11,7 @@ btn.addEventListener('click', function heig() {
     arr1 = [];
     arr2 = [];
     container.innerHTML = "";
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i <= 15; i++) {
         count.push(i);
         var size = Math.floor(Math.random() * 550) + 50;
         arr1.push(size);
